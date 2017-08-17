@@ -609,17 +609,7 @@ AC_C_CONST
 dnl
 dnl check in which direction the stack grows
 dnl
-AC_CACHE_CHECK([for growing stack pointer],glib_cv_stack_grows,[
-        AC_TRY_RUN([
-	volatile int *a = 0, *b = 0;
-	void f (int i) { volatile int x = 5; if (i == 0) b = &x; else f (i - 1); }
-	int main () { volatile int y = 7; a = &y; f (100); return b > a ? 0 : 1; }
-       	],
-	glib_cv_stack_grows=yes
-        ,
-	glib_cv_stack_grows=no
-        ,)
-])
+glib_cv_stack_grows=no
 
 # check for flavours of varargs macros
 AC_MSG_CHECKING(for ISO C99 varargs macros in C)
@@ -1466,23 +1456,7 @@ int main () {
   		G_MODULE_BROKEN_RTLD_GLOBAL=0
 	fi
 dnl *** check whether we need preceeding underscores
-	AC_CACHE_CHECK([for preceeding underscore in symbols],
-		glib_cv_uscore,[
-		AC_TRY_RUN([#include <dlfcn.h>
-                int glib_underscore_test (void) { return 42; }
-		int main() {
-		  void *f1 = (void*)0, *f2 = (void*)0, *handle;
-		  handle = dlopen ((void*)0, 0);
-		  if (handle) {
-		    f1 = dlsym (handle, "glib_underscore_test");
-		    f2 = dlsym (handle, "_glib_underscore_test");
-		  } return (!f2 || f1);
-		}],
-			[glib_cv_uscore=yes],
-			[glib_cv_uscore=no],
-			[])
-		rm -f plugin.c plugin.$ac_objext plugin.lo
-	])
+glib_cv_uscore=no
         GLIB_ASSERT_SET(glib_cv_uscore)
 	if test "x$glib_cv_uscore" = "xyes"; then
   		G_MODULE_NEED_USCORE=1
