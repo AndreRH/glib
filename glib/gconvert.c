@@ -22,7 +22,7 @@
 #include "glibconfig.h"
 
 #ifndef G_OS_WIN32
-#include <iconv.h>
+#include "../stub-iconv.h"
 #endif
 #include <errno.h>
 #include <stdio.h>

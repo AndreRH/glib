@@ -20,7 +20,7 @@
 
 #include <glib.h>
 
-#include <libintl.h>
+#include "../stub-libintl.h"
 #include <string.h>
 
 #ifndef GETTEXT_PACKAGE

@@ -20,7 +20,7 @@
 
 #include <glib.h>
 
-#include <libintl.h>
+#include "../stub-libintl.h"
 #include <string.h>
 
 #define  _(String) gettext (String)

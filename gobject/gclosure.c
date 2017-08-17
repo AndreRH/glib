@@ -25,7 +25,7 @@
 #include "../glib/valgrind.h"
 #include <string.h>
 
-#include <ffi.h>
+#include "../stub-ffi.h"
 
 #include "gclosure.h"
 #include "gboxed.h"
@@ -1151,7 +1151,6 @@ g_signal_type_cclosure_new (GType    itype,
   return closure;
 }
 
-#include <ffi.h>
 static ffi_type *
 value_to_ffi_type (const GValue *gvalue,
                    gpointer *value,
