@@ -433,9 +433,9 @@ AS_IF([ test x"$glib_native_win32" = xyes], [
       ;;
   esac
 
-  if test "x$found_iconv" = "xno" ; then
-     AC_MSG_ERROR([*** No iconv() implementation found in C library or libiconv])
-  fi
+  #if test "x$found_iconv" = "xno" ; then
+  #   AC_MSG_ERROR([*** No iconv() implementation found in C library or libiconv])
+  #fi
 ])
 
 dnl
@@ -451,9 +451,9 @@ AS_IF([test "x$found_zlib" = "xno"], [
   AC_SUBST(ZLIB_LIBS)
 ])
 
-PKG_CHECK_MODULES(LIBFFI, [libffi >= 3.0.0])
-AC_SUBST(LIBFFI_CFLAGS)
-AC_SUBST(LIBFFI_LIBS)
+#PKG_CHECK_MODULES(LIBFFI, [libffi >= 3.0.0])
+#AC_SUBST(LIBFFI_CFLAGS)
+#AC_SUBST(LIBFFI_LIBS)
 
 dnl
 dnl gettext support
@@ -463,12 +463,12 @@ ALL_LINGUAS="`grep -v '^#' "$srcdir/po/LINGUAS" | tr '\n' ' '`"
 AC_SUBST([CONFIG_STATUS_DEPENDENCIES],['$(top_srcdir)/po/LINGUAS'])
 GLIB_GNU_GETTEXT
 
-if test "$gt_cv_have_gettext" != "yes" ; then
-  AC_MSG_ERROR([
-*** You must have either have gettext support in your C library, or use the
-*** GNU gettext library. (http://www.gnu.org/software/gettext/gettext.html)
-])
-fi
+#if test "$gt_cv_have_gettext" != "yes" ; then
+#  AC_MSG_ERROR([
+#*** You must have either have gettext support in your C library, or use the
+#*** GNU gettext library. (http://www.gnu.org/software/gettext/gettext.html)
+#])
+#fi
 
 LIBS="$INTLLIBS $LIBS"
 
@@ -487,7 +487,7 @@ AS_IF([test x"$glib_native_win32" != xyes], [
   if test x$with_libiconv != xno ; then
     case " $INTLLIBS " in
     *[[\ \	]]-liconv[[\ \	]]*) ;;
-    *) ICONV_LIBS="-liconv" ;;
+    *) ICONV_LIBS="" ;;
     esac
   fi
 ])
@@ -1766,9 +1766,9 @@ AS_IF([ test $have_libmount = maybe ], [
     have_libmount=yes
   fi
 ])
-if test $have_libmount = no ; then
-   AC_MSG_ERROR([*** Could not find libmount])
-fi
+#if test $have_libmount = no ; then
+#   AC_MSG_ERROR([*** Could not find libmount])
+#fi
 ])
 
 if test x$have_libmount = xyes; then
